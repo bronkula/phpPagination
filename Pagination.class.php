@@ -29,7 +29,7 @@ class Pagination {
         $this->template = @$params->template ?: "?item={{id}}";
         $this->lastitem = ($this->totalitems - 1) ?: 0;
         $this->startitem = $this->limit * $this->offset ?: 0;
-        $this->lastoffsetitem = min($this->startitem + $this->limit, $this->lastitem) ?: 0;
+        $this->lastoffsetitem = min($this->startitem + $this->limit, $this->totalitems) ?: 0;
         $this->totalpages = floor($this->totalitems / $this->limit);
     }
     private function mustache($id){return preg_replace('/\{\{id}}/',$id,$this->template);}
